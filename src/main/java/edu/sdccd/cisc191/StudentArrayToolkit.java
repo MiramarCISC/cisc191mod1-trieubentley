@@ -21,8 +21,18 @@ public class StudentArrayToolkit {
      * Must not modify the original array.
      */
     public static Student[] copySortedByGpaDesc(Student[] students) {
-        // TODO: defensive copy + Arrays.sort with Comparator lambda
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (students == null) {
+            throw new IllegalArgumentException("Students array cannot be null");
+        }
+
+        Student[] copy = Arrays.copyOf(students, students.length);
+
+        Comparator<Student> comparator =
+                Comparator.comparing(Student::getGpa).reversed()
+                        .thenComparing(Student::getName);
+
+        Arrays.sort(copy, comparator);
+        return copy;
     }
 
     /**
@@ -30,8 +40,16 @@ public class StudentArrayToolkit {
      * Returns the Student if found, otherwise null.
      */
     public static Student findByIdLinear(Student[] students, int id) {
-        // TODO: implement
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (students == null) {
+            throw new IllegalArgumentException("Students array cannot be null");
+        }
+
+        for (Student s : students) {
+            if (s.getId() == id) {
+                return s;
+            }
+        }
+        return null;
     }
 
     /**
@@ -41,7 +59,16 @@ public class StudentArrayToolkit {
      * @throws IllegalArgumentException if n < 0
      */
     public static Student[] topNByGpa(Student[] students, int n) {
-        // TODO: validate n, sort copy, return first n in a new array
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (students == null) {
+            throw new IllegalArgumentException("Students array cannot be null");
+        }
+        if (n < 0) {
+            throw new IllegalArgumentException("n cannot be negative");
+        }
+
+        Student[] sorted = copySortedByGpaDesc(students);
+
+        int size = Math.min(n, sorted.length);
+        return Arrays.copyOf(sorted, size);
     }
 }
