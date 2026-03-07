@@ -36,13 +36,17 @@ public class Main {
         }
 
 // ----- findByIdLinear (existing ID) -----
-        Student foundExisting = StudentArrayToolkit.findByIdLinear(students, 103);
+        // Student foundExisting = StudentArrayToolkit.findByIdLinear(students, 103);
         System.out.println("\nFind ID 103:");
-        System.out.println(foundExisting);
+        // System.out.println(foundExisting); 
+        // if not referencing Student foundExisting again, then just print it out without saving it to a variable
+        System.out.println(StudentArrayToolkit.findByIdLinear(students, 103));
 
 // ----- findByIdLinear (non-existing ID) -----
-        Student foundMissing = StudentArrayToolkit.findByIdLinear(students, 999);
+        // Student foundMissing = StudentArrayToolkit.findByIdLinear(students, 999);
         System.out.println("\nFind ID 999:");
-        System.out.println(foundMissing);  // should print null
+        // System.out.println(foundMissing);  // should print null
+        // if not referencing Student foundMissing again, then just print it out without saving it to a variable
+        System.out.println(StudentArrayToolkit.findByIdLinear(students, 999));
     }
 }
