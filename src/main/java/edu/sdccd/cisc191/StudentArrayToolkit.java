@@ -1,7 +1,9 @@
 package edu.sdccd.cisc191;
 
+/* replaced with import java.util.*;
 import java.util.Arrays;
-import java.util.Comparator;
+import java.util.Comparator; */
+import java.util.*;
 
 /**
  * Module 1 - Part C
